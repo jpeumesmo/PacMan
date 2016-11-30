@@ -15,13 +15,13 @@ class Conexao():
     # def __init__(self,ip,cliente):
         # self.ip = ip
         # self.cliente = cliente
-    
+
     def conectado(self, con, cliente ,user):
         print 'Conectado por', cliente
 
         while True:
-            msg = CONNECTION_LIST[user].recv(32)
-            if str(msg) <> 'out':
+            msg = CONNECTION_LIST[user].recv(64)
+            if int(msg)  < 5 :
                 # con.send('recebida')
                 print cliente,'diz \n',msg
 
@@ -29,13 +29,22 @@ class Conexao():
 
                 for key in k:
                     if(key != user):
-                        CONNECTION_LIST[key].sendall(str(cliente)+msg)
+                        CONNECTION_LIST[key].sendall(msg)
 
-        print cliente,'Saiu'
-        CONNECTION_LIST[user].close()
-        con.close()
-        thread.exit()
-        print 'finalizada'
+            else:
+                #fazer algo pra receber os 2 placares
+                print 'Placar: ',msg
+                print cliente,'Saiu'
+                k = CONNECTION_LIST.keys()
+                for key in k:
+                    if(key != user):
+                        # CONNECTION_LIST[key].sendall(str(cliente)+msg)
+                        CONNECTION_LIST[key].sendall(msg)
+                CONNECTION_LIST[user].close()
+                CONNECTION_LIST.pop(user)
+                con.close()
+                thread.exit()
+                print 'finalizada'
 
 c = Conexao()
 user = 0
@@ -45,7 +54,7 @@ CONNECTION_LIST = {}
 while True:
 
     con, cliente = tcp.accept()
-    CONNECTION_LIST[user] =con
+    CONNECTION_LIST[user] = con
     thread.start_new_thread(c.conectado, tuple([con, cliente ,user]))
     user+=1
 

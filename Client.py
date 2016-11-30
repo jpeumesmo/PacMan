@@ -13,21 +13,21 @@ class Mensagem():
 
     def envia(self):
         thread.start_new_thread(m.recebe, tuple([1,2]))
-        msg = raw_input('digite .. para sair\n')
-        while msg <> '..':
-            tcp.send (msg)
-            msg = raw_input()
-        tcp.send ('out')
+        msg = raw_input('digite\n')
+        if int(msg) < 5:
+            tcp.send (str(msg))            
+        tcp.send (msg)
         tcp.close()
+        thread.exit()
 
     def recebe(self,a,b):
         while True:
 
-            msg = tcp.recv(32)
+            msg = tcp.recv(64)
             print msg
-            if str(msg) <> 'out':
-                print msg
+            #if str(msg) <> 'out':
+                #print msg
 # t = treadd(tcp)
 
-m = Mensagem()
-m.envia()
+# m = Mensagem()
+# m.envia()
