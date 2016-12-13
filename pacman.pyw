@@ -1,4 +1,4 @@
-#! /usr/bin/python
+    #! /usr/bin/python
 
 # pacman.pyw
 # By David Reilly
@@ -848,32 +848,33 @@ class pacman ():
             thisLevel.CheckIfHitSomething((self.x, self.y), (self.nearestRow, self.nearestCol))
 
             # check for collisions with the ghosts
-            for i in range(0, 4, 1):
-                if thisLevel.CheckIfHit( (self.x, self.y), (ghosts[i].x, ghosts[i].y), 8):
+#            for i in range(0, 4, 1):
+#                if thisLevel.CheckIfHit( (self.x, self.y), (ghosts[i].x, ghosts[i].y), 8):
                     # hit a ghost
 
-                    if ghosts[i].state == 1:
+#                    if ghosts[i].state == 1:
                         # ghost is normal
-                        thisGame.SetMode( 2 )
+#                        thisGame.SetMode( 2 )
 
-                    elif ghosts[i].state == 2:
+#                    elif ghosts[i].state == 2:
                         # ghost is vulnerable
                         # give them glasses
                         # make them run
-                        thisGame.AddToScore(thisGame.ghostValue)
-                        thisGame.ghostValue = thisGame.ghostValue * 2
-                        snd_eatgh.play()
+#                        thisGame.AddToScore(thisGame.ghostValue)
+#                        thisGame.ghostValue = thisGame.ghostValue * 2
+#                        snd_eatgh.play()
 
-                        ghosts[i].state = 3
-                        ghosts[i].speed = ghosts[i].speed * 4
+#                        ghosts[i].state = 3
+#                        ghosts[i].speed = ghosts[i].speed * 4
                         # and send them to the ghost box
-                        ghosts[i].x = ghosts[i].nearestCol * 16
-                        ghosts[i].y = ghosts[i].nearestRow * 16
-                        ghosts[i].currentPath = path.FindPath( (ghosts[i].nearestRow, ghosts[i].nearestCol), (thisLevel.GetGhostBoxPos()[0]+1, thisLevel.GetGhostBoxPos()[1]) )
-                        ghosts[i].FollowNextPathWay()
+#                        ghosts[i].x = ghosts[i].nearestCol * 16
+#                        ghosts[i].y = ghosts[i].nearestRow * 16
+#                        ghosts[i].currentPath = path.FindPath( (ghosts[i].nearestRow, ghosts[i].nearestCol), (thisLevel.GetGhostBoxPos()[0]+1, thisLevel.GetGhostBoxPos()[1]) )
+#                        ghosts[i].FollowNextPathWay()
 
                         # set game mode to brief pause after eating
-                        thisGame.SetMode( 5 )
+#                        thisGame.SetMode( 5 )
+
 
             # check for collisions with the fruit
             if thisFruit.active == True:
@@ -890,14 +891,14 @@ class pacman ():
             self.velY = 0
 
         # deal with power-pellet ghost timer
-        if thisGame.ghostTimer > 0:
-            thisGame.ghostTimer -= 1
+#        if thisGame.ghostTimer > 0:
+#            thisGame.ghostTimer -= 1
 
-            if thisGame.ghostTimer == 0:
-                for i in range(0, 4, 1):
-                    if ghosts[i].state == 2:
-                        ghosts[i].state = 1
-                self.ghostValue = 0
+#            if thisGame.ghostTimer == 0:
+#                for i in range(0, 4, 1):
+#                    if ghosts[i].state == 2:
+#                        ghosts[i].state = 1
+#                self.ghostValue = 0
 
         # deal with fruit timer
         thisGame.fruitTimer += 1
@@ -974,11 +975,11 @@ class pacmanServer ():
 
 
         for i in range(1, 8, 1):
-             self.anim_pacmanL[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","pacman-l " + str(i) + ".gif")).convert()
-             self.anim_pacmanR[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","pacman-r " + str(i) + ".gif")).convert()
-             self.anim_pacmanU[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","pacman-u " + str(i) + ".gif")).convert()
-             self.anim_pacmanD[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","pacman-d " + str(i) + ".gif")).convert()
-             self.anim_pacmanS[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","pacman.gif")).convert()
+             self.anim_pacmanL[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","pacmann-l " + str(i) + ".gif")).convert()
+             self.anim_pacmanR[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","pacmann-r " + str(i) + ".gif")).convert()
+             self.anim_pacmanU[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","pacmann-u " + str(i) + ".gif")).convert()
+             self.anim_pacmanD[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","pacmann-d " + str(i) + ".gif")).convert()
+             self.anim_pacmanS[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","pacmann.gif")).convert()
 
 
 #        for i in range(1, 9, 1):
@@ -1006,32 +1007,32 @@ class pacmanServer ():
             thisLevel.CheckIfHitSomething((self.x, self.y), (self.nearestRow, self.nearestCol))
 
             # check for collisions with the ghosts
-            for i in range(0, 4, 1):
-                if thisLevel.CheckIfHit( (self.x, self.y), (ghosts[i].x, ghosts[i].y), 8):
+        #    for i in range(0, 4, 1):
+        #        if thisLevel.CheckIfHit( (self.x, self.y), (ghosts[i].x, ghosts[i].y), 8):
                     # hit a ghost
 
-                    if ghosts[i].state == 1:
+        #            if ghosts[i].state == 1:
                         # ghost is normal
-                        thisGame.SetMode( 2 )
+        #                thisGame.SetMode( 2 )
 
-                    elif ghosts[i].state == 2:
+        #            elif ghosts[i].state == 2:
                         # ghost is vulnerable
                         # give them glasses
                         # make them run
-                        thisGame.AddToScore(thisGame.ghostValue)
-                        thisGame.ghostValue = thisGame.ghostValue * 2
-                        snd_eatgh.play()
+        #                thisGame.AddToScore(thisGame.ghostValue)
+        #                thisGame.ghostValue = thisGame.ghostValue * 2
+        #                snd_eatgh.play()
 
-                        ghosts[i].state = 3
-                        ghosts[i].speed = ghosts[i].speed * 4
+        #                ghosts[i].state = 3
+        #                ghosts[i].speed = ghosts[i].speed * 4
                         # and send them to the ghost box
-                        ghosts[i].x = ghosts[i].nearestCol * 16
-                        ghosts[i].y = ghosts[i].nearestRow * 16
-                        ghosts[i].currentPath = path.FindPath( (ghosts[i].nearestRow, ghosts[i].nearestCol), (thisLevel.GetGhostBoxPos()[0]+1, thisLevel.GetGhostBoxPos()[1]) )
-                        ghosts[i].FollowNextPathWay()
+        #                ghosts[i].x = ghosts[i].nearestCol * 16
+        #                ghosts[i].y = ghosts[i].nearestRow * 16
+        #                ghosts[i].currentPath = path.FindPath( (ghosts[i].nearestRow, ghosts[i].nearestCol), (thisLevel.GetGhostBoxPos()[0]+1, thisLevel.GetGhostBoxPos()[1]) )
+        #                ghosts[i].FollowNextPathWay()
 
                         # set game mode to brief pause after eating
-                        thisGame.SetMode( 5 )
+        #                thisGame.SetMode( 5 )
 
             # check for collisions with the fruit
             if thisFruit.active == True:
@@ -1048,14 +1049,14 @@ class pacmanServer ():
             self.velY = 0
 
         # deal with power-pellet ghost timer
-        if thisGame.ghostTimer > 0:
-            thisGame.ghostTimer -= 1
+        #if thisGame.ghostTimer > 0:
+        #    thisGame.ghostTimer -= 1
 
-            if thisGame.ghostTimer == 0:
-                for i in range(0, 4, 1):
-                    if ghosts[i].state == 2:
-                        ghosts[i].state = 1
-                self.ghostValue = 0
+        #    if thisGame.ghostTimer == 0:
+        #        for i in range(0, 4, 1):
+        #            if ghosts[i].state == 2:
+        #                ghosts[i].state = 1
+        #        self.ghostValue = 0
 
         # deal with fruit timer
         thisGame.fruitTimer += 1
@@ -1440,8 +1441,8 @@ class level ():
                         elif thisID >= 10 and thisID <= 13:
                             # one of the ghosts
 
-                            ghosts[thisID - 10].homeX = k * 16
-                            ghosts[thisID - 10].homeY = rowNum * 16
+                            #ghosts[thisID - 10].homeX = k * 16
+                            #ghosts[thisID - 10].homeY = rowNum * 16
                             self.SetMapTile((rowNum, k), 0 )
 
                         elif thisID == 2:
@@ -1470,27 +1471,27 @@ class level ():
 
     def Restart (self):
 
-        for i in range(0, 4, 1):
+        #for i in range(0, 4, 1):
             # move ghosts back to home
 
-            ghosts[i].x = ghosts[i].homeX
-            ghosts[i].y = ghosts[i].homeY
-            ghosts[i].velX = 0
-            ghosts[i].velY = 0
-            ghosts[i].state = 1
-            ghosts[i].speed = 1
-            ghosts[i].Move()
+        #    ghosts[i].x = ghosts[i].homeX
+        #    ghosts[i].y = ghosts[i].homeY
+        #    ghosts[i].velX = 0
+        #    ghosts[i].velY = 0
+        #    ghosts[i].state = 1
+        #    ghosts[i].speed = 1
+        #    ghosts[i].Move()
 
             # give each ghost a path to a random spot (containing a pellet)
-            (randRow, randCol) = (0, 0)
+        #    (randRow, randCol) = (0, 0)
 
-            while not self.GetMapTile((randRow, randCol)) == tileID[ 'pellet' ] or (randRow, randCol) == (0, 0):
-                randRow = random.randint(1, self.lvlHeight - 2)
-                randCol = random.randint(1, self.lvlWidth - 2)
+#            while not self.GetMapTile((randRow, randCol)) == tileID[ 'pellet' ] or (randRow, randCol) == (0, 0):
+#                randRow = random.randint(1, self.lvlHeight - 2)
+#                randCol = random.randint(1, self.lvlWidth - 2)
 
             # print "Ghost " + str(i) + " headed towards " + str((randRow, randCol))
-            ghosts[i].currentPath = path.FindPath( (ghosts[i].nearestRow, ghosts[i].nearestCol), (randRow, randCol) )
-            ghosts[i].FollowNextPathWay()
+#            ghosts[i].currentPath = path.FindPath( (ghosts[i].nearestRow, ghosts[i].nearestCol), (randRow, randCol) )
+#            ghosts[i].FollowNextPathWay()
 
         thisFruit.active = False
 
@@ -1772,10 +1773,10 @@ playerServer = pacmanServer()
 path = path_finder()
 
 # create ghost objects
-ghosts = {}
-for i in range(0, 6, 1):
+#ghosts = {}
+#for i in range(0, 6, 1):
     # remember, ghost[4] is the blue, vulnerable ghost
-    ghosts[i] = ghost(i)
+#    ghosts[i] = ghost(i)
 
 # create piece of fruit
 thisFruit = fruit()
@@ -1812,8 +1813,8 @@ while True:
         thisGame.modeTimer += 1
         player.Move()
         playerServer.Move()
-        for i in range(0, 4, 1):
-            ghosts[i].Move()
+        #for i in range(0, 4, 1):
+        #    ghosts[i].Move()
         thisFruit.Move()
 
     elif thisGame.mode == 2:
@@ -1901,8 +1902,8 @@ while True:
             if thisGame.modeTimer % 2 == 0:
                 thisGame.DrawNumber (2500, (thisFruit.x - thisGame.screenPixelPos[0] - 16, thisFruit.y - thisGame.screenPixelPos[1] + 4))
 
-        for i in range(0, 4, 1):
-            ghosts[i].Draw()
+        #for i in range(0, 4, 1):
+            #ghosts[i].Draw()
         thisFruit.Draw()
         player.Draw()
         playerServer.Draw()
