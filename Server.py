@@ -19,6 +19,14 @@ class Conexao():
     def conectado(self, con, cliente ,user):
         print 'Conectado por', cliente
 
+        i = 0
+        while True:
+            if len(CONNECTION_LIST) == 1 and i == 0:
+                print 'Aguardando conexao adversario'
+                i = 1
+            if len(CONNECTION_LIST) > 1 :
+                break
+
         while True:
             msg = CONNECTION_LIST[user].recv(64)
             if int(msg)  < 5 :
@@ -40,11 +48,11 @@ class Conexao():
                     if(key != user):
                         # CONNECTION_LIST[key].sendall(str(cliente)+msg)
                         CONNECTION_LIST[key].sendall(msg)
-                CONNECTION_LIST[user].close()
-                CONNECTION_LIST.pop(user)
-                con.close()
-                thread.exit()
-                print 'finalizada'
+                        CONNECTION_LIST.pop(user)
+                        CONNECTION_LIST[user].close()
+                        con.close()
+                        thread.exit()
+                        print 'finalizada'
 
 c = Conexao()
 user = 0

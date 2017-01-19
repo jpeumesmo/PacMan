@@ -168,9 +168,9 @@ class game ():
         self.modeTimer = 0
         self.ghostTimer = 0
         self.ghostValue = 0
-        self.fruitTimer = 0
-        self.fruitScoreTimer = 0
-        self.fruitScorePos = (0, 0)
+        #self.fruitTimer = 0
+        #self.fruitScoreTimer = 0
+        #self.fruitScorePos = (0, 0)
 
         self.SetMode( 3 )
 
@@ -220,7 +220,7 @@ class game ():
         for i in range(0, self.lives, 1):
             screen.blit (self.imLife, (24 + i * 10 + 16, self.screenSize[1] - 12) )
 
-        screen.blit (thisFruit.imFruit[ thisFruit.fruitType ], (4 + 16, self.screenSize[1] - 20) )
+        #screen.blit (thisFruit.imFruit[ thisFruit.fruitType ], (4 + 16, self.screenSize[1] - 20) )
 
         if self.mode == 3:
             screen.blit (self.imGameOver, (self.screenSize[0] / 2 - 32, self.screenSize[1] / 2 - 10) )
@@ -588,41 +588,41 @@ class ghost ():
                 self.anim[ self.animFrame ].set_at( (x+6, y), (0, 0, 255, 255) )
         # -- end ghost eyes
 
-        if self.state == 1:
+#        if self.state == 1:
             # draw regular ghost (this one)
-            screen.blit (self.anim[ self.animFrame ], (self.x - thisGame.screenPixelPos[0], self.y - thisGame.screenPixelPos[1]))
-        elif self.state == 2:
+#            screen.blit (self.anim[ self.animFrame ], (self.x - thisGame.screenPixelPos[0], self.y - thisGame.screenPixelPos[1]))
+#        elif self.state == 2:
             # draw vulnerable ghost
 
-            if thisGame.ghostTimer > 100:
+#            if thisGame.ghostTimer > 100:
                 # blue
-                screen.blit (ghosts[4].anim[ self.animFrame ], (self.x - thisGame.screenPixelPos[0], self.y - thisGame.screenPixelPos[1]))
-            else:
+#                screen.blit (ghosts[4].anim[ self.animFrame ], (self.x - thisGame.screenPixelPos[0], self.y - thisGame.screenPixelPos[1]))
+#            else:
                 # blue/white flashing
-                tempTimerI = int(thisGame.ghostTimer / 10)
-                if tempTimerI == 1 or tempTimerI == 3 or tempTimerI == 5 or tempTimerI == 7 or tempTimerI == 9:
-                    screen.blit (ghosts[5].anim[ self.animFrame ], (self.x - thisGame.screenPixelPos[0], self.y - thisGame.screenPixelPos[1]))
-                else:
-                    screen.blit (ghosts[4].anim[ self.animFrame ], (self.x - thisGame.screenPixelPos[0], self.y - thisGame.screenPixelPos[1]))
+#                tempTimerI = int(thisGame.ghostTimer / 10)
+#                if tempTimerI == 1 or tempTimerI == 3 or tempTimerI == 5 or tempTimerI == 7 or tempTimerI == 9:
+#                    screen.blit (ghosts[5].anim[ self.animFrame ], (self.x - thisGame.screenPixelPos[0], self.y - thisGame.screenPixelPos[1]))
+#                else:
+#                    screen.blit (ghosts[4].anim[ self.animFrame ], (self.x - thisGame.screenPixelPos[0], self.y - thisGame.screenPixelPos[1]))
 
-        elif self.state == 3:
+#        elif self.state == 3:
             # draw glasses
-            screen.blit (tileIDImage[ tileID[ 'glasses' ] ], (self.x - thisGame.screenPixelPos[0], self.y - thisGame.screenPixelPos[1]))
+#            screen.blit (tileIDImage[ tileID[ 'glasses' ] ], (self.x - thisGame.screenPixelPos[0], self.y - thisGame.screenPixelPos[1]))
 
-        if thisGame.mode == 6 or thisGame.mode == 7:
+#        if thisGame.mode == 6 or thisGame.mode == 7:
             # don't animate ghost if the level is complete
-            return False
+#            return False
 
-        self.animDelay += 1
+#        self.animDelay += 1
 
-        if self.animDelay == 2:
-            self.animFrame += 1
+#        if self.animDelay == 2:
+#            self.animFrame += 1
 
-            if self.animFrame == 7:
+#            if self.animFrame == 7:
                 # wrap to beginning
-                self.animFrame = 1
+#                self.animFrame = 1
 
-            self.animDelay = 0
+#            self.animDelay = 0
 
     def Move (self):
 
@@ -690,36 +690,36 @@ class ghost ():
                     self.currentPath = path.FindPath( (self.nearestRow, self.nearestCol), (randRow, randCol) )
                     self.FollowNextPathWay()
 
-class fruit ():
-    def __init__ (self):
+#class fruit ():
+#    def __init__ (self):
         # when fruit is not in use, it's in the (-1, -1) position off-screen.
-        self.slowTimer = 0
-        self.x = -16
-        self.y = -16
-        self.velX = 0
-        self.velY = 0
-        self.speed = 1
-        self.active = False
+#        self.slowTimer = 0
+#        self.x = -16
+#        self.y = -16
+#        self.velX = 0
+#        self.velY = 0
+#        self.speed = 1
+#        self.active = False
 
-        self.bouncei = 0
-        self.bounceY = 0
+#        self.bouncei = 0
+#        self.bounceY = 0
 
-        self.nearestRow = (-1, -1)
-        self.nearestCol = (-1, -1)
+#        self.nearestRow = (-1, -1)
+#        self.nearestCol = (-1, -1)
 
-        self.imFruit = {}
-        for i in range(0, 5, 1):
-            self.imFruit[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","fruit " + str(i) + ".gif")).convert()
+#        self.imFruit = {}
+#        for i in range(0, 5, 1):
+#            self.imFruit[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","fruit " + str(i) + ".gif")).convert()
 
-        self.currentPath = ""
-        self.fruitType = 1
+#        self.currentPath = ""
+#        self.fruitType = 1
 
     def Draw (self):
 
         if thisGame.mode == 3 or self.active == False:
             return False
 
-        screen.blit (self.imFruit[ self.fruitType ], (self.x - thisGame.screenPixelPos[0], self.y - thisGame.screenPixelPos[1] - self.bounceY))
+#        screen.blit (self.imFruit[ self.fruitType ], (self.x - thisGame.screenPixelPos[0], self.y - thisGame.screenPixelPos[1] - self.bounceY))
 
 
     def Move (self):
@@ -782,7 +782,7 @@ class fruit ():
                     self.y = self.nearestRow * 16
 
                     self.active = False
-                    thisGame.fruitTimer = 0
+#                    thisGame.fruitTimer = 0
 
     def FollowNextPathWay (self):
 
@@ -877,13 +877,13 @@ class pacman ():
 
 
             # check for collisions with the fruit
-            if thisFruit.active == True:
-                if thisLevel.CheckIfHit( (self.x, self.y), (thisFruit.x, thisFruit.y), 8):
-                    thisGame.AddToScore(2500)
-                    thisFruit.active = False
-                    thisGame.fruitTimer = 0
-                    thisGame.fruitScoreTimer = 120
-                    snd_eatfruit.play()
+#            if thisFruit.active == True:
+#                if thisLevel.CheckIfHit( (self.x, self.y), (thisFruit.x, thisFruit.y), 8):
+#                    thisGame.AddToScore(2500)
+#                    thisFruit.active = False
+#                    thisGame.fruitTimer = 0
+#                    thisGame.fruitScoreTimer = 120
+#                    snd_eatfruit.play()
 
         else:
             # we're going to hit a wall -- stop moving
@@ -901,8 +901,8 @@ class pacman ():
 #                self.ghostValue = 0
 
         # deal with fruit timer
-        thisGame.fruitTimer += 1
-        if thisGame.fruitTimer == 500:
+#        thisGame.fruitTimer += 1
+#        if thisGame.fruitTimer == 500:
             pathwayPair = thisLevel.GetPathwayPairPos()
 
             if not pathwayPair == False:
@@ -910,19 +910,19 @@ class pacman ():
                 pathwayEntrance = pathwayPair[0]
                 pathwayExit = pathwayPair[1]
 
-                thisFruit.active = True
+#                thisFruit.active = True
 
-                thisFruit.nearestRow = pathwayEntrance[0]
-                thisFruit.nearestCol = pathwayEntrance[1]
+#                thisFruit.nearestRow = pathwayEntrance[0]
+#                thisFruit.nearestCol = pathwayEntrance[1]
 
-                thisFruit.x = thisFruit.nearestCol * 16
-                thisFruit.y = thisFruit.nearestRow * 16
+#                thisFruit.x = thisFruit.nearestCol * 16
+#                thisFruit.y = thisFruit.nearestRow * 16
 
-                thisFruit.currentPath = path.FindPath( (thisFruit.nearestRow, thisFruit.nearestCol), pathwayExit )
-                thisFruit.FollowNextPathWay()
+#                thisFruit.currentPath = path.FindPath( (thisFruit.nearestRow, thisFruit.nearestCol), pathwayExit )
+#                thisFruit.FollowNextPathWay()
 
-        if thisGame.fruitScoreTimer > 0:
-            thisGame.fruitScoreTimer -= 1
+#        if thisGame.fruitScoreTimer > 0:
+#            thisGame.fruitScoreTimer -= 1
 
 
     def Draw (self):
@@ -1035,13 +1035,13 @@ class pacmanServer ():
         #                thisGame.SetMode( 5 )
 
             # check for collisions with the fruit
-            if thisFruit.active == True:
-                if thisLevel.CheckIfHit( (self.x, self.y), (thisFruit.x, thisFruit.y), 8):
-                    thisGame.AddToScore(2500)
-                    thisFruit.active = False
-                    thisGame.fruitTimer = 0
-                    thisGame.fruitScoreTimer = 120
-                    snd_eatfruit.play()
+#            if thisFruit.active == True:
+#                if thisLevel.CheckIfHit( (self.x, self.y), (thisFruit.x, thisFruit.y), 8):
+#                    thisGame.AddToScore(2500)
+#                    thisFruit.active = False
+#                    thisGame.fruitTimer = 0
+#                    thisGame.fruitScoreTimer = 120
+#                    snd_eatfruit.play()
 
         else:
             # we're going to hit a wall -- stop moving
@@ -1059,8 +1059,8 @@ class pacmanServer ():
         #        self.ghostValue = 0
 
         # deal with fruit timer
-        thisGame.fruitTimer += 1
-        if thisGame.fruitTimer == 500:
+#        thisGame.fruitTimer += 1
+#        if thisGame.fruitTimer == 500:
             pathwayPair = thisLevel.GetPathwayPairPos()
 
             if not pathwayPair == False:
@@ -1068,19 +1068,19 @@ class pacmanServer ():
                 pathwayEntrance = pathwayPair[0]
                 pathwayExit = pathwayPair[1]
 
-                thisFruit.active = True
+#                thisFruit.active = True
 
-                thisFruit.nearestRow = pathwayEntrance[0]
-                thisFruit.nearestCol = pathwayEntrance[1]
+#                thisFruit.nearestRow = pathwayEntrance[0]
+#                thisFruit.nearestCol = pathwayEntrance[1]
 
-                thisFruit.x = thisFruit.nearestCol * 16
-                thisFruit.y = thisFruit.nearestRow * 16
+#                thisFruit.x = thisFruit.nearestCol * 16
+#                thisFruit.y = thisFruit.nearestRow * 16
 
-                thisFruit.currentPath = path.FindPath( (thisFruit.nearestRow, thisFruit.nearestCol), pathwayExit )
-                thisFruit.FollowNextPathWay()
+#                thisFruit.currentPath = path.FindPath( (thisFruit.nearestRow, thisFruit.nearestCol), pathwayExit )
+#                thisFruit.FollowNextPathWay()
 
-        if thisGame.fruitScoreTimer > 0:
-            thisGame.fruitScoreTimer -= 1
+#        if thisGame.fruitScoreTimer > 0:
+#            thisGame.fruitScoreTimer -= 1
 
 
     def Draw (self):
@@ -1212,9 +1212,9 @@ class level ():
                         thisGame.ghostValue = 200
 
                         thisGame.ghostTimer = 360
-                        for i in range(0, 4, 1):
-                            if ghosts[i].state == 1:
-                                ghosts[i].state = 2
+#                        for i in range(0, 4, 1):
+#                            if ghosts[i].state == 1:
+#                                ghosts[i].state = 2
 
                     elif result == tileID[ 'door-h' ]:
                         # ran into a horizontal door
@@ -1402,8 +1402,8 @@ class level ():
                     blue = int( str_splitBySpace[4] )
                     self.pelletColor = (red, green, blue, 255)
 
-                elif firstWord == "fruittype":
-                    thisFruit.fruitType = int( str_splitBySpace[2] )
+#                elif firstWord == "fruittype":
+#                    thisFruit.fruitType = int( str_splitBySpace[2] )
 
                 elif firstWord == "startleveldata":
                     isReadingLevelData = True
@@ -1493,9 +1493,9 @@ class level ():
 #            ghosts[i].currentPath = path.FindPath( (ghosts[i].nearestRow, ghosts[i].nearestCol), (randRow, randCol) )
 #            ghosts[i].FollowNextPathWay()
 
-        thisFruit.active = False
+#        thisFruit.active = False
 
-        thisGame.fruitTimer = 0
+#        thisGame.fruitTimer = 0
 
         player.x = player.homeX
         player.y = player.homeY
@@ -1737,7 +1737,7 @@ class Mensagem():
 
             self.msg = tcp.recv(64)
             if self.msg:
-                print self.msg
+                #print self.msg
                 CheckInputsServer()
                 # print self.msg,'-----'
             #print self.msg
@@ -1779,7 +1779,7 @@ path = path_finder()
 #    ghosts[i] = ghost(i)
 
 # create piece of fruit
-thisFruit = fruit()
+#thisFruit = fruit()
 
 tileIDName = {} # gives tile name (when the ID# is known)
 tileID = {} # gives tile ID (when the name is known)
@@ -1815,7 +1815,7 @@ while True:
         playerServer.Move()
         #for i in range(0, 4, 1):
         #    ghosts[i].Move()
-        thisFruit.Move()
+        #thisFruit.Move()
 
     elif thisGame.mode == 2:
         # waiting after getting hit by a ghost
@@ -1898,13 +1898,13 @@ while True:
     if not thisGame.mode == 8:
         thisLevel.DrawMap()
 
-        if thisGame.fruitScoreTimer > 0:
-            if thisGame.modeTimer % 2 == 0:
-                thisGame.DrawNumber (2500, (thisFruit.x - thisGame.screenPixelPos[0] - 16, thisFruit.y - thisGame.screenPixelPos[1] + 4))
+        #if thisGame.fruitScoreTimer > 0:
+        #    if thisGame.modeTimer % 2 == 0:
+        #        thisGame.DrawNumber (2500, (thisFruit.x - thisGame.screenPixelPos[0] - 16, thisFruit.y - thisGame.screenPixelPos[1] + 4))
 
         #for i in range(0, 4, 1):
             #ghosts[i].Draw()
-        thisFruit.Draw()
+        #thisFruit.Draw()
         player.Draw()
         playerServer.Draw()
 
